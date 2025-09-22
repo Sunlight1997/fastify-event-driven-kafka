@@ -3,20 +3,21 @@
 // This file contains code that we reuse
 // between our tests.
 
-const { build: buildApplication } = require('fastify-cli/helper')
-const path = require('node:path')
+import path from "node:path"
+import {build as buildApplication} from "fastify-cli/helper"
+
 const AppPath = path.join(__dirname, '..', 'app.js')
 
 // Fill in this config with all the configurations
 // needed for testing the application
-function config () {
+export function config () {
   return {
     skipOverride: true // Register our application with fastify-plugin
   }
 }
 
 // automatically build and tear down our instance
-async function build (t) {
+export async function build (t) {
   // you can set all the options supported by the fastify CLI command
   const argv = [AppPath]
 
@@ -29,9 +30,4 @@ async function build (t) {
   t.after(() => app.close())
 
   return app
-}
-
-module.exports = {
-  config,
-  build
 }

@@ -1,8 +1,8 @@
 'use strict'
 
-const { test } = require('node:test')
-const assert = require('node:assert')
-const { build } = require('../helper')
+import { test } from "node:test"
+import assert from "node:assert"
+import { build } from "../helper"
 
 test('default root route', async (t) => {
   const app = await build(t)
